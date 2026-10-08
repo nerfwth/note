@@ -1,0 +1,13 @@
+# Obsidian 本地窗口布局（多设备会冲突，无需备份）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# 回收站
+.trash/
+
+# 操作系统垃圾文件
+.DS_Store
+Thumbs.db
+
+# PDF 文献不进 git 仓库（避免仓库膨胀 / 超 100MB 限制）
+*.pdf
