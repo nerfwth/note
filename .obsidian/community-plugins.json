@@ -3,5 +3,7 @@
   "dataview",
   "pdf-plus",
   "obsidian-minimal-settings",
-  "obsidian-style-settings"
+  "obsidian-style-settings",
+  "obsidian-zotero-desktop-connector",
+  "templater-obsidian"
 ]
