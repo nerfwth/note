@@ -1,6 +1,6 @@
 ---
 title: "{{title}}"
-authors: "{{authors}}"
+authors: "{% for c in creators if c.creatorType == 'author' %}{{([c.firstName, c.lastName] | join(' ')) | trim}}{% if not loop.last %}, {% endif %}{% endfor %}"
 year: "{{year}}"
 rating: 
 status: unread
@@ -12,7 +12,7 @@ tags: [literature]
 # {{title}}
 
 > [!info] 文献元信息
-> - **作者**：{{authors}}
+> - **作者**：{% for c in creators if c.creatorType == 'author' %}{{([c.firstName, c.lastName] | join(' ')) | trim}}{% if not loop.last %}, {% endif %}{% endfor %}
 > - **年份**：{{year}}
 > - **类型**：{{itemType}}
 > - **DOI**：{{DOI}}
@@ -32,7 +32,11 @@ tags: [literature]
 - 
 
 ## 我的批注
-- 
+{% persist "notes" %}
+{% if isFirstImport %}- {% endif %}
+{% endpersist %}
 
 ## 关联文献
-- [[ ]]
+{% persist "links" %}
+{% if isFirstImport %}- [[ ]] {% endif %}
+{% endpersist %}

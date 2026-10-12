@@ -29,32 +29,43 @@ Zotero Integration 靠 Zotero 本地的 **23119 端口**通信，必须打开开
 2. 确认 Zotero 正在后台运行。
 3. 验证：浏览器打开 <http://127.0.0.1:23119/> 应有响应（显示 Zotero 本地服务信息）。
 
-## 三、配置 Zotero Integration（在 Obsidian 里，3 步）
+## 三、配置 Zotero Integration（在 Obsidian 里，按截图填）
 
 打开 Obsidian → 设置 → Zotero Integration：
 
 1. **连接确认**：顶部应显示已连上 Zotero（显示版本号即成功）。若报错「无法连接」，回到第二节检查端口与 BBT。
-2. **导入模板（Template）**：选择 `90-Templates/literature.md`。
-3. 按下面逐项填写：
+
+2. **顶部通用设置**（你截图里这一页）：
    | 设置项 | 填什么 |
    |---|---|
-   | Import note to folder（导入到文件夹） | `10-Literature` |
-   | Import note as（笔记文件名） | `{{citekey}}` |
-   | Attachment folder（附件文件夹） | `{{citekey}}` |
-   | BibTeX / 引用键格式 | **Better BibTeX**（这就是 BBT 的用武之地） |
-   | Import annotations（导入标注） | 按需开启（配合 PDF++ 体验更好） |
-   | Open note after import（导入后打开） | 开启 |
+   | Database | `Zotero`（默认已选） |
+   | Note Import Location | `10-Literature`（这一项是给「导入 Zotero 自带笔记」用的；主流程也能复用） |
+   | Open the created or updated note(s) after import | 开启（导入后自动打开笔记） |
+   | PDF Utility | 如果你只想导入文献元信息 + PDF 链接，这一项**不需要下载**；只有「把 PDF 高亮转成 Obsidian 标注」时才需要 |
 
-> 找不到某项英文名时，直接搜中文含义对应的英文（如 "folder"、"citekey"、"Better BibTeX"）。
+3. **添加导入格式（Import Formats）**：
+   - 点击你截图里的 **「Add Import Format」**。
+   - 在弹出的对话框里按下面填写：
+   | 设置项 | 填什么 |
+   |---|---|
+   | Name | `Literature`（这个名字会变成命令面板里的命令） |
+   | Template | `90-Templates/literature.md` |
+   | Output path | `10-Literature/{{citekey}}.md`（含文件名；完整输出路径） |
+   | Image output path | `assets/{{citekey}}/`（PDF 标注图片放这里；不需要也可留默认） |
+   | Image base name | `image`（默认即可） |
+   | CSL Style | 默认即可，除非你想要特定引文格式 |
+
+4. **命令面板确认**：填好后，按 `Ctrl+P` 应该能搜到 **`Zotero Integration: Literature`**。
+
+> 模板用的是 **Nunjucks** 语法（不是 Templater）。想查看某篇 Zotero 文献有哪些可用字段，用 `Ctrl+P` → `Data explorer`。
 
 ## 四、一键导入（跑通文献流）
 
-任意一种方式：
+1. 在 Obsidian 按 `Ctrl+P` → 搜 **`Zotero Integration: Literature`** → 回车。
+2. 会弹出 Zotero 文献搜索框 → 输入标题/作者/引用键 → 选中一篇文献 → 回车。
+3. 结果：在 `10-Literature/` 下生成 `《引用键》.md`，自动填好标题、作者、年份、DOI、Zotero 链接、PDF 嵌入、引用键（写进 `aliases`）。`40-MOC/文献管理 MOC.md` 用 Dataview 会自动把它汇总进「未读文献」表。
 
-- **方式 A（推荐）**：在 Obsidian 按 `Ctrl+P` 打开命令面板 → 搜 `Zotero Integration: Import` / 「导入」→ 选 Zotero 里的一篇文献 → 回车。
-- **方式 B**：Zotero 里选中条目 → 右键 → 通过 Zotero Connector /「Add note from template」推送到 Obsidian（取决于你装的连接器版本）。
-
-结果：在 `10-Literature/` 下生成 `《引用键》.md`，自动填好标题、作者、年份、DOI、Zotero 链接、PDF 嵌入、引用键（写进 `aliases`）。`40-MOC/文献管理 MOC.md` 用 Dataview 会自动把它汇总进「未读文献」表。
+> 如果命令面板里只找到 `Zotero Integration: Import notes`，那是用来导入「Zotero 自带的笔记」的，不是我们要的元数据导入；确认第三节第 3 步的 Import Format 已添加。
 
 ## 五、Templater（手动建笔记也用得上）
 

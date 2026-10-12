@@ -1,19 +1,19 @@
 {
   "database": "Zotero",
-  "noteImportFolder": "",
+  "noteImportFolder": "10-Literature",
   "pdfExportImageDPI": 120,
   "pdfExportImageFormat": "jpg",
   "pdfExportImageQuality": 90,
   "citeFormats": [],
   "exportFormats": [
     {
-      "name": "Import #1",
-      "outputPathTemplate": "{{citekey}}.md",
-      "imageOutputPathTemplate": "{{citekey}}/",
-      "imageBaseNameTemplate": "image"
+      "name": "Literature",
+      "outputPathTemplate": "90-Templates/literature.md",
+      "imageOutputPathTemplate": "assets/{{citekey}}/",
+      "imageBaseNameTemplate": "\timage"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
-  "openNoteAfterImport": false,
+  "openNoteAfterImport": true,
   "whichNotesToOpenAfterImport": "first-imported-note"
 }
