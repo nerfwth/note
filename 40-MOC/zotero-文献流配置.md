@@ -93,6 +93,7 @@ Obsidian Git 每 10 分钟自动备份 + 推送 GitHub
 - **`{{citekey}}` 空白**：BBT 没启用，或 Zotero Integration 的引用键格式没选 Better BibTeX。
 - **PDF 不进 git**：`.gitignore` 已排除 `*.pdf`，PDF 只在本地 / Zotero 里，仓库保持轻量。
 - **导入后不在 MOC 出现**：确认笔记落到了 `10-Literature/`，且 frontmatter 有 `status: unread`、标签含 `literature`。
+- **报错 `Import failed for 90-Templates/literature.md`**：把 **Template** 和 **Output path** 填反了。Template 是模板文件 `90-Templates/literature.md`；Output path 是导入后笔记要存到哪，应填 `10-Literature/{{citekey}}.md`。
 
 ## 八、全流程：从网上找一篇论文 → 落进 Obsidian
 

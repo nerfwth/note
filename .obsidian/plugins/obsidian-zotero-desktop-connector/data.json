@@ -8,9 +8,10 @@
   "exportFormats": [
     {
       "name": "Literature",
-      "outputPathTemplate": "90-Templates/literature.md",
+      "templatePath": "90-Templates/literature.md",
+      "outputPathTemplate": "10-Literature/{{citekey}}.md",
       "imageOutputPathTemplate": "assets/{{citekey}}/",
-      "imageBaseNameTemplate": "\timage"
+      "imageBaseNameTemplate": "image"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
