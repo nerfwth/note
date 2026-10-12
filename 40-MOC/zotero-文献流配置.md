@@ -93,3 +93,35 @@ Obsidian Git 每 10 分钟自动备份 + 推送 GitHub
 - **`{{citekey}}` 空白**：BBT 没启用，或 Zotero Integration 的引用键格式没选 Better BibTeX。
 - **PDF 不进 git**：`.gitignore` 已排除 `*.pdf`，PDF 只在本地 / Zotero 里，仓库保持轻量。
 - **导入后不在 MOC 出现**：确认笔记落到了 `10-Literature/`，且 frontmatter 有 `status: unread`、标签含 `literature`。
+
+## 八、全流程：从网上找一篇论文 → 落进 Obsidian
+
+> 核心链路：浏览器抓文献 → 存进 Zotero（BBT 给引用键）→ Obsidian 一键导入成笔记 → 读/批注/织网 → Git 备份。
+
+### A. 收集（在浏览器里把论文存进 Zotero）
+1. 装 **Zotero Connector** 浏览器扩展（Chrome/Edge/Firefox 扩展商店搜 "Zotero Connector"）。
+2. 打开论文页（arXiv / Google Scholar / 出版社 / 期刊页均可）。
+3. 点浏览器工具栏的 **Zotero 图标** → 选保存到哪个分类 → 回车。
+   - 网站提供 PDF 时，Connector 通常会同时抓取 PDF 作为附件。
+   - 没抓到 PDF：去 Zotero 里右键该条目 → Add Attachment → Add PDF；或直接把下载好的 PDF 文件拖进 Zotero 窗口（会自动生成父条目+附件）。
+4. Zotero 中该条目立刻生成，**BBT 自动分配引用键**（如 `Zhang2024Attention`）。
+
+### B. 转成笔记（在 Obsidian 里生成文献笔记）
+5. Obsidian 按 `Ctrl+P` → 搜 **`Zotero Integration: Literature`** → 回车。
+6. 弹出的搜索框里输入标题 / 作者 / 引用键 → 选中 → 回车。
+7. 自动在 `10-Literature/引用键.md` 生成笔记，填好：标题、作者、年份、DOI、Zotero 链接、PDF 链接、引用键（写进 `aliases`，可 `[[引用键]]` 互链）。
+
+### C. 读 & 织网
+8. 点笔记里的 PDF 链接（配合 **PDF++**）打开阅读，高亮/批注可双向链接回笔记。
+9. 在「我的批注」「关联文献」里写想法，用 `[[概念]]` 互联。
+10. 提炼成 `20-Notes/` 永久卡片。
+11. `40-MOC/文献管理 MOC.md` 用 Dataview 自动汇总未读/已读/主题。
+
+### D. 备份
+12. **Obsidian Git** 每 10 分钟自动提交 + 推送 GitHub。（PDF 不进 git，只留在 Zotero，仓库保持轻量。）
+
+### 常见备选 / 坑
+- **没网络 / 没装 Connector**：直接下载 PDF 文件 → 拖进 Zotero 窗口 → 自动建条目，再走 B 步。
+- **导入报「无法连接」**：Zotero 没开 / 没勾「允许其他应用通信」/ 23119 不通。
+- **`{{citekey}}` 空白**：BBT 没启用。
+- **PDF 不在 vault 里**：`{{PDFAttachments}}` 默认链接到 Zotero 存储里的 PDF（不复制进 vault），这是预期行为，想本地化需另行配置附件复制。
