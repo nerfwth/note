@@ -12,6 +12,13 @@
       "outputPathTemplate": "10-Literature/{{citekey}}.md",
       "imageOutputPathTemplate": "assets/{{citekey}}/",
       "imageBaseNameTemplate": "image"
+    },
+    {
+      "name": "Debug",
+      "templatePath": "90-Templates/zotero-debug.md",
+      "outputPathTemplate": "10-Literature/__DEBUG_{{citekey}}.md",
+      "imageOutputPathTemplate": "assets/{{citekey}}/",
+      "imageBaseNameTemplate": "image"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",

@@ -57,7 +57,7 @@ Zotero Integration 靠 Zotero 本地的 **23119 端口**通信，必须打开开
 
 4. **命令面板确认**：填好后，按 `Ctrl+P` 应该能搜到 **`Zotero Integration: Literature`**。
 
-> 模板用的是 **Nunjucks** 语法（不是 Templater）。想查看某篇 Zotero 文献有哪些可用字段，用 `Ctrl+P` → `Data explorer`。
+> 模板用的是 **Nunjucks** 语法（不是 Templater）。关键变量名：`date`（不是 `year`，用 `date \| format("YYYY")` 取年份）、`desktopURI`（不是 `localLibrary`，Zotero 本地链接）、`attachments`（不是 `PDFAttachments`，PDF 用 `a.pdfURI`）。想查看某篇 Zotero 文献有哪些可用字段，用 `Ctrl+P` → `Data explorer`。
 
 ## 四、一键导入（跑通文献流）
 
