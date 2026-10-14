@@ -14,3 +14,5 @@ relevant paper
 method contract
 # pass3
 put oneself in other's position  
+
+# more method not more engineering
