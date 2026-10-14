@@ -113,10 +113,14 @@ Obsidian Git 每 10 分钟自动备份 + 推送 GitHub
 7. 自动在 `10-Literature/引用键.md` 生成笔记，填好：标题、作者、年份、DOI、Zotero 链接、PDF 链接、引用键（写进 `aliases`，可 `[[引用键]]` 互链）。
 
 ### C. 读 & 织网
-8. 点笔记里的 PDF 链接（配合 **PDF++**）打开阅读，高亮/批注可双向链接回笔记。
+8. **选择阅读位置**（两种方案，二选一）：
+   - **方案 A（推荐，Zotero 里读）**：点笔记里的 **PDF 链接** → 用 Zotero 自带 PDF 阅读器打开 → 高亮/写批注 → 之后重跑 `Zotero Integration: Literature` 导入，新批注会同步回笔记。
+   - **方案 B（Obsidian 里读）**：把 PDF 文件复制进 vault（例如 `assets/引用键/paper.pdf`），笔记里链接到本地 PDF → 用 Obsidian / **PDF++** 内部阅读器打开，选中文字即可高亮并创建双向链接。
 9. 在「我的批注」「关联文献」里写想法，用 `[[概念]]` 互联。
 10. 提炼成 `20-Notes/` 永久卡片。
 11. `40-MOC/文献管理 MOC.md` 用 Dataview 自动汇总未读/已读/主题。
+
+> **注意**：PDF++ **不能拦截 `zotero://` 外部协议链接**，所以模板里的 `zotero://open-pdf` 链接默认会在 Zotero 应用中打开。想完全在 Obsidian 内读 PDF，必须走方案 B（PDF 进 vault）。
 
 ### D. 备份
 12. **Obsidian Git** 每 10 分钟自动提交 + 推送 GitHub。（PDF 不进 git，只留在 Zotero，仓库保持轻量。）
