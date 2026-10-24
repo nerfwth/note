@@ -41,18 +41,13 @@ $$
 如果原始距离能够在低维空间中精确表示，就尽可能精确表示；如果不能，就尽量减少距离失真。
 
 ![Extension and Evaluation of Multidimensional Scaling MDS for](https://images.openai.com/static-rsc-4/sCeG9xTOemNBAPadyWL5xJNKl-ioBdFbUNoYrcPQ2p1WbFNsHVO6yt5V1XTeLJtAvg1oKPSC3kMaJXKr0TPkN7vhhRZScvbiiMl9TzDh9WQu-laO_4tMsyRRRu_Kr0wRYVHaK1vyImi4E53m9_CPeve8v6io2EpBS0Ijw0jRL2s?purpose=inline)
-
-[slidetodoc.com](https://slidetodoc.com/extension-and-evaluation-of-multidimensional-scaling-mds-for/?utm_source=chatgpt.com)
-
 这里最重要的一点是：MDS 的输入可以只有距离矩阵，不一定需要原始坐标。
 
 这也是它和 PCA 的一个重要区别。
 
-## 二、MDS 和 PCA 有什么区别？
+## MDS 和 PCA 有什么区别？
 
-先不要急着计算，理解两者分别在优化什么。
-
-## PCA：主成分分析
+### PCA：主成分分析
 
 核心问题：怎样投影才能保留更多变化信息？
 
@@ -60,7 +55,7 @@ $$
 - 寻找投影方差最大的方向。
 - 主要利用协方差矩阵 $X^TX$ 的特征分解。
 
-## MDS：多维尺度分析
+### MDS：多维尺度分析
 
 核心问题：怎样降维才能尽可能保留样本之间的距离？
 
@@ -68,13 +63,12 @@ $$
 - 尽可能保留两两距离关系。
 - 经典 MDS 通过距离矩阵恢复内积矩阵，再进行特征分解。
 
-有一个与你前面学习直接相关的结论：
 
 对于欧氏距离，经典 MDS 和 PCA 可以得到相同的降维坐标（至多相差坐标系的旋转、反射等正交变换）。这是因为它们都可以通过 SVD 联系起来。
 
 不过，它们的出发点不同；对于非欧氏距离，两者不一定等价。
 
-## 三、MDS 的整体算法
+## MDS 的整体算法
 
 先看完整流程，再逐步推导。
 
@@ -106,7 +100,7 @@ $Z=Q_k\Lambda_k^{1/2}$
 
 注意，课件中的距离矩阵记号可能把距离平方也简写为 $D$ 。为了避免混淆，我们这里明确写成 $D^{(2)}$ ：双重中心化公式使用的是距离的平方，而不是直接使用距离。
 
-## 四、为什么距离矩阵能够恢复内积矩阵？
+## 为什么距离矩阵能够恢复内积矩阵？
 
 这是经典 MDS 最核心的数学原理。
 
@@ -122,7 +116,7 @@ $$
 
 关键在于下面这个公式。
 
-## 4.1 从距离公式出发
+### 从距离公式出发
 
 假设有 $n$ 个样本，它们的坐标分别为：
 
@@ -174,7 +168,7 @@ $$
 
 所以接下来的目标就是：通过中心化，把这两个长度项消除。
 
-## 4.2 为什么需要中心化？
+### 为什么需要中心化？
 
 先假设所有样本已经中心化，也就是：
 
@@ -461,7 +455,7 @@ $$
 
 
 
-
+## 
 ### 三、MDS算法示例
 
 让我们用一个关于水果口味的例子来说明MDS算法的原理。
