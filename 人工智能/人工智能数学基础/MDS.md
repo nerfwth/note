@@ -551,26 +551,203 @@ $$
 
 这与你已经学过的谱分解和 SVD 直接联系起来了。
 
-## 本节先记住这三个公式
+### 为什么 MDS 要构造 $ZZ^T=Q_k\Lambda_kQ_k^T$？
 
-1\. 距离平方与内积的关系
+## 一、MDS 的目标
 
-$$
-d_{ij}^2=\|x_i\|^2+\|x_j\|^2-2x_i^Tx_j
-$$
-
-2\. 双重中心化
+我们已经通过距离矩阵得到了原始数据的内积矩阵：
 
 $$
 G=-\frac12HD^{(2)}H
 $$
 
-3\. MDS 降维坐标
+对它进行特征值分解：
 
 $$
-Z=Q_k\Lambda_k^{1/2}
+G=Q\Lambda Q^T
 $$
 
+其中，$G_{ij}=x_i^Tx_j$，表示原始样本 $x_i$ 和 $x_j$ 的内积。
+
+现在，我们希望将原始数据降到 $k$ 维，得到低维坐标：
+
+$$
+z_1,z_2,\ldots,z_n\in\mathbb R^k
+$$
+
+我们的目标是让低维坐标尽可能保留原始数据的内积关系：
+
+$$
+z_i^Tz_j\approx x_i^Tx_j
+$$
+
+## 二、为什么低维坐标的内积矩阵是 $ZZ^T$？
+
+将所有低维坐标按行排列，得到矩阵：
+
+$$
+Z=
+\begin{bmatrix}
+z_1^T\\
+z_2^T\\
+\vdots\\
+z_n^T
+\end{bmatrix}
+\in\mathbb R^{n\times k}
+$$
+
+那么：
+
+$$
+ZZ^T\in\mathbb R^{n\times n}
+$$
+
+根据矩阵乘法的定义，第 $i$ 行、第 $j$ 列的元素为：
+
+$$
+(ZZ^T)_{ij}=z_i^Tz_j
+$$
+
+因此，$ZZ^T$ 就是低维坐标之间的内积矩阵。
+
+理想情况下，我们希望：
+
+$$
+ZZ^T=G
+$$
+
+如果降维导致信息损失，就希望 $ZZ^T$ 尽可能接近 $G$。
+
+## 三、为什么令 $Z=Q_k\Lambda_k^{1/2}$？
+
+原始内积矩阵的特征值分解为：
+
+$$
+G=Q\Lambda Q^T
+$$
+
+为了降到 $k$ 维，我们保留前 $k$ 个特征值及其对应的特征向量。
+
+记：
+
+$$
+Q_k=[q_1,q_2,\ldots,q_k]
+$$
+
+以及：
+
+$$
+\Lambda_k=
+\begin{bmatrix}
+\lambda_1&0&\cdots&0\\
+0&\lambda_2&\cdots&0\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&\lambda_k
+\end{bmatrix}
+$$
+
+由于：
+
+$$
+\Lambda_k^{1/2}\Lambda_k^{1/2}=\Lambda_k
+$$
+
+因此，我们构造低维坐标矩阵：
+
+$$
+\boxed{Z=Q_k\Lambda_k^{1/2}}
+$$
+
+对它进行转置：
+
+$$
+Z^T=\Lambda_k^{1/2}Q_k^T
+$$
+
+两者相乘：
+
+$$
+\begin{aligned}
+ZZ^T
+&=(Q_k\Lambda_k^{1/2})
+(\Lambda_k^{1/2}Q_k^T)\\
+&=Q_k\Lambda_k^{1/2}
+\Lambda_k^{1/2}Q_k^T\\
+&=Q_k\Lambda_kQ_k^T
+\end{aligned}
+$$
+
+因此：
+
+$$
+\boxed{ZZ^T=Q_k\Lambda_kQ_k^T}
+$$
+
+## 四、这个等式有什么用？
+
+原始内积矩阵可以写成：
+
+$$
+G=\sum_{i=1}^{n}\lambda_iq_iq_i^T
+$$
+
+保留前 $k$ 个特征方向后：
+
+$$
+ZZ^T=\sum_{i=1}^{k}\lambda_iq_iq_i^T
+$$
+
+两者相减：
+
+$$
+\boxed{
+G-ZZ^T=\sum_{i=k+1}^{n}\lambda_iq_iq_i^T
+}
+$$
+
+对于经典 MDS 的欧氏距离数据，$G$ 是半正定矩阵，特征值非负。
+
+因此：
+
+- $G$：原始数据的完整内积关系。
+- $ZZ^T$：降维后保留的内积关系。
+- $G-ZZ^T$：被舍弃的特征方向所贡献的部分。
+
+如果保留所有非零特征值，就可以精确恢复原始内积矩阵；如果只保留前 $k$ 个特征值，就得到它的低秩近似。
+
+## 五、总结
+
+MDS 的完整过程是：
+
+$$
+\text{距离矩阵}
+\longrightarrow
+\text{内积矩阵}
+\longrightarrow
+\text{特征值分解}
+\longrightarrow
+\text{低维坐标}
+$$
+
+核心公式：
+
+$$
+G=-\frac12HD^{(2)}H
+$$
+
+$$
+G=Q\Lambda Q^T
+$$
+
+$$
+\boxed{Z=Q_k\Lambda_k^{1/2}}
+$$
+
+$$
+\boxed{ZZ^T=Q_k\Lambda_kQ_k^T}
+$$
+
+**最关键的理解：** 我们乘上特征值的平方根，是为了让低维坐标矩阵与其转置相乘后，得到保留主要特征方向的内积矩阵。
 
 
 
