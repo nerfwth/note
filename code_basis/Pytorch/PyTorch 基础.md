@@ -152,18 +152,17 @@ if torch.cuda.is_available():
 
 PyTorch的张量支持自动微分，这是深度学习中的关键特性。当你创建一个需要梯度的张量时，PyTorch可以自动计算其梯度：
 
-## 实例
-
-\# 创建一个需要梯度的张量  
-tensor\_requires\_grad = torch.tensor(\[1.0\], requires\_grad=True)  
+```python
+# 创建一个需要梯度的张量  
+tensor_requires_grad = torch.tensor([1.0], requires_grad=True)  
   
-\# 进行一些操作  
-tensor\_result = tensor\_requires\_grad \* 2  
+# 进行一些操作  
+tensor_result = tensor_requires_grad * 2  
   
-\# 计算梯度  
-tensor\_result.backward()  
-print(tensor\_requires\_grad.grad) # 输出梯度
-
+# 计算梯度  
+tensor_result.backward()  
+print(tensor_requires_grad.grad) # 输出梯度
+```
 ### 内存和性能
 
 PyTorch 张量还提供了一些内存管理功能，比如.clone()、.detach() 和.to() 方法，它们可以帮助你优化内存使用和提高性能。
@@ -191,18 +190,19 @@ torch.Tensor 对象有一个 requires\_grad 属性，用于指示是否需要计
 
 创建需要梯度的张量:
 
-## 实例
-
-\# 创建一个需要计算梯度的张量  
-x = torch.randn(2, 2, requires\_grad=True)  
+```python
+# 创建一个需要计算梯度的张量  
+x = torch.randn(2, 2, requires_grad=True)  
 print(x)  
   
-\# 执行某些操作  
+# 执行某些操作  
 y = x + 2  
-z = y \* y \* 3  
-out = z.mean()  
+z = y * y * 3  
+out = z.mean()  # z.mean() 用于计算张量 z 的所有元素的平均值。
   
 print(out)
+
+```
 
 输出结果类似如下：
 
@@ -227,30 +227,27 @@ tensor(18.1469, grad_fn=<MeanBackward0>)
 
 一旦定义了计算图，可以通过.backward() 方法来计算梯度。
 
-## 实例
+```python
+ 实例
 
 \# 反向传播，计算梯度  
 out.backward()  
   
 \# 查看 x 的梯度  
 print(x.grad)
-
+```
 在神经网络训练中，自动求导主要用于实现反向传播算法。
-
 反向传播是一种通过计算损失函数关于网络参数的梯度来训练神经网络的方法。在每次迭代中，网络的前向传播会计算输出和损失，然后反向传播会计算损失关于每个参数的梯度，并使用这些梯度来更新参数。
-
 ### 停止梯度计算
 
 如果你不希望某些张量的梯度被计算（例如，当你不需要反向传播时），可以使用 torch.no\_grad() 或设置 requires\_grad=False。
 
-## 实例
-
-\# 使用 torch.no\_grad() 禁用梯度计算  
-with torch.no\_grad():  
-y = x \* 2
-
+```python
+# 使用 torch.no_grad() 禁用梯度计算  
+with torch.no_grad():  
+y = x * 2
+```
 ---
-
 ## 神经网络（nn.Module）
 
 神经网络是一种模仿人脑神经元连接的计算模型，由多层节点（神经元）组成，用于学习数据之间的复杂模式和关系。
@@ -264,9 +261,8 @@ PyTorch 提供了一个非常方便的接口来构建神经网络模型，即 to
 我们可以继承 nn.Module 类并定义自己的网络层。
 
 创建一个简单的神经网络：
-
-## 实例
-
+```python
+ 实例
 import torch.nn as nn  
 import torch.optim as optim  
   
@@ -287,6 +283,7 @@ model = SimpleNN()
   
 \# 打印模型结构  
 print(model)
+```
 
 输出结果：
 
