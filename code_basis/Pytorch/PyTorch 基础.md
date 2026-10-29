@@ -304,7 +304,7 @@ SimpleNN(
 5. **迭代（Iteration）** ： 重复上述过程，直到模型在训练数据上的性能达到满意的水平。
 
 ### 前向传播与损失计算
-
+```python
 ## 实例
 
 \# 随机输入  
@@ -323,6 +323,8 @@ target = torch.randn(1, 1)
 \# 计算损失  
 loss = criterion(output, target)  
 print(loss)
+```
+
 
 ### 优化器（Optimizers）
 
@@ -332,7 +334,8 @@ PyTorch 提供了多种优化器，例如 SGD、Adam 等。
 
 使用优化器进行参数更新：
 
-## 实例
+
+```python
 
 \# 定义优化器（使用 Adam 优化器）  
 optimizer = optim.Adam(model.parameters(), lr=0.001)  
@@ -341,6 +344,8 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 optimizer.zero\_grad() # 清空梯度  
 loss.backward() # 反向传播  
 optimizer.step() # 更新参数
+```
+
 
 ---
 
@@ -352,10 +357,10 @@ optimizer.step() # 更新参数
 
 1. **数据准备** ：
 	- 收集和处理数据，包括清洗、标准化和归一化。
-		- 将数据分为训练集、验证集和测试集。
+	- 将数据分为训练集、验证集和测试集。
 2. **定义模型** ：
 	- 选择模型架构，例如决策树、神经网络等。
-		- 初始化模型参数（权重和偏置）。
+	- 初始化模型参数（权重和偏置）。
 3. **选择损失函数** ：
 	- 根据任务类型（如分类、回归）选择合适的损失函数。
 4. **选择优化器** ：
@@ -377,7 +382,7 @@ optimizer.step() # 更新参数
 12. **部署模型** ：
 	- 将训练好的模型部署到生产环境中，用于实际的预测任务。
 
-## 实例
+```python
 
 import torch  
 import torch.nn as nn  
@@ -385,15 +390,15 @@ import torch.optim as optim
   
 \# 1. 定义一个简单的神经网络模型  
 class SimpleNN(nn.Module):  
-def \_\_init\_\_(self):  
-super(SimpleNN, self).\_\_init\_\_()  
-self.fc1 = nn.Linear(2, 2) # 输入层到隐藏层  
-self.fc2 = nn.Linear(2, 1) # 隐藏层到输出层  
+	def \_\_init\_\_(self):  
+		super(SimpleNN, self).\_\_init\_\_()  
+		self.fc1 = nn.Linear(2, 2) # 输入层到隐藏层  
+		self.fc2 = nn.Linear(2, 1) # 隐藏层到输出层  
   
-def forward(self, x):  
-x = torch.relu(self.fc1(x)) # ReLU 激活函数  
-x = self.fc2(x)  
-return x  
+	def forward(self, x):  
+	x = torch.relu(self.fc1(x)) # ReLU 激活函数  
+	x = self.fc2(x)  
+	return x  
   
 \# 2. 创建模型实例  
 model = SimpleNN()  
@@ -417,10 +422,11 @@ optimizer.step() # 更新参数
 \# 每 10 轮输出一次损失  
 if (epoch+1) % 10 == 0:  
 print(f'Epoch \[{epoch+1}/100\], Loss: {loss.item():.4f}')
+```
 
 输出结果如下：
-
 ```
+
 Epoch [10/100], Loss: 1.7180
 Epoch [20/100], Loss: 1.6352
 Epoch [30/100], Loss: 1.5590
@@ -447,8 +453,9 @@ PyTorch 允许你将模型和数据移动到 GPU 上进行加速。
 
 将模型和数据移至 GPU:
 
-## 实例
+## ```
 
+```python
 device = torch.device("cuda" if torch.cuda.is\_available() else "cpu")  
   
 \# 将模型移动到设备  
@@ -457,5 +464,6 @@ model.to(device)
 \# 将数据移动到设备  
 X = X.to(device)  
 Y = Y.to(device)
+```
 
 在训练过程中，所有张量和模型都应该移到同一个设备上（要么都在 CPU 上，要么都在 GPU 上）。
