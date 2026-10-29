@@ -263,17 +263,18 @@ PyTorch 提供了一个非常方便的接口来构建神经网络模型，即 to
 创建一个简单的神经网络：
 ```python
  实例
+import torch
 import torch.nn as nn  
-import torch.optim as optim  
+import torch.optim as optim  #导入优化器模块
   
-\# 定义一个简单的全连接神经网络  
+# 定义一个简单的全连接神经网络  
 class SimpleNN(nn.Module):  
-def \_\_init\_\_(self):  
-super(SimpleNN, self).\_\_init\_\_()  
+def __init__(self):  
+super(SimpleNN, self).__init__()  #调用父类 `nn.Module` 的初始化方法，让 PyTorch 正确初始化这个网络模块。
 self.fc1 = nn.Linear(2, 2) # 输入层到隐藏层  
 self.fc2 = nn.Linear(2, 1) # 隐藏层到输出层  
   
-def forward(self, x):  
+def forward(self, x):  #约定用于定义前向计算的方法
 x = torch.relu(self.fc1(x)) # ReLU 激活函数  
 x = self.fc2(x)  
 return x  
