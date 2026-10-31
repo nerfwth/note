@@ -43,3 +43,11 @@ int 32位
 long 64位
 float 32位浮点数
 double 64位浮点数
+
+
+# 占位符format code
+%c
+%f
+%i
+%li
+%s
