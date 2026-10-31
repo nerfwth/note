@@ -23,9 +23,9 @@ common convention:
 32位 32bits one time ~4 billion
 64位
 
-# 早期编码系统
+编码系统
 ## ASCII  
-the american standard code for information interchange
+the american standard code for information interchange 早期的
 8位 最多表示256个字符
 
 capital letter A 01000001 （65）
