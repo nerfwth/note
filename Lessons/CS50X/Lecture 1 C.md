@@ -11,3 +11,6 @@ $clear 清空终端窗口
 
 CLI
 命令行界面 command-line interface
+
+库、头文件
+example stdio.h 
