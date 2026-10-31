@@ -39,3 +39,7 @@ hello/ $mv hello.c ..  3两个点表示父文件夹，即移到上级文件夹
 hello/ $mv hello.c .   4一个点表示当前文件夹
 rm    //删除一个文件
 $rm hello
+
+
+中断程序
+ctrl-c
