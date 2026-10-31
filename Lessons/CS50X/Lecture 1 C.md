@@ -13,4 +13,6 @@ CLI
 命令行界面 command-line interface
 
 库、头文件
-example stdio.h 
+example stdio.h (standardio.h)
+
+查询的网站manual.cs50.io 
