@@ -44,3 +44,13 @@ score[0]=72;
 score[1]=73;
 score[2]=33;
 ```
+```c++
+float average(int length,int numbers[])
+{
+	int sum =0;
+	for(int i=0;i<length;i++)
+	{
+		sum+=numbers[i];
+	}
+}
+```
