@@ -8,6 +8,7 @@ $ make hello   //编译
 $ ./hello    //在当前文件夹中运行hello程序
 
 $clear 清空终端窗口
+上方向键可以看历史命令
 
 # CLI
 命令行界面 command-line interface
@@ -48,5 +49,10 @@ ctrl-c
 ## design
 ## style
 
-# constants
+# code
+## constants
 const int n;  //n是一个数值不变的整数
+
+## truncation 截断
+int 整数部分截断
+%0.50f      .后面的数字代表保留多少位，但是50已经超出float精度，所以最后面会出现随机数
