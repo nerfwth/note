@@ -47,3 +47,6 @@ ctrl-c
 ## correctness
 ## design
 ## style
+
+# constants
+const int n;  //n是一个数值不变的整数
