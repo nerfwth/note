@@ -39,10 +39,13 @@ superset of ASCII
 ## RGB
 
 # 变量类型
-int 32位
-long 64位
-float 32位浮点数
-double 64位浮点数
+bool      1byte
+int 32位    4byte 
+long 64位    8byte
+float 32位浮点数   4byte
+double 64位浮点数     8byte
+char 1 byte
+string  ?byte
 
 
 # 占位符format code

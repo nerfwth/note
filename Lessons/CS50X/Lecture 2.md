@@ -23,3 +23,5 @@ $clang hello.c -lcs50  (链接cs50库)
 
 ### command-line argumemts 命令行参数
 $clang -o hello hello.c -lcs50  //这里等于可以自定义程序名为hello
+
+# 内存
