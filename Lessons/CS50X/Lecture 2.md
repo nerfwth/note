@@ -23,5 +23,15 @@ $clang hello.c -lcs50  (链接cs50库)
 
 ### command-line argumemts 命令行参数
 $clang -o hello hello.c -lcs50  //这里等于可以自定义程序名为hello
+# 运算
+只要在计算中用到哪怕一个浮点数，整个运算就会自动提升为浮点数运算。
+example ：
+```c++
+int score1，score2,score3；
+(score1+score2+score3)/3.0
+(score1+score2+score3)/(float)3
+```
+注意：```
+(float)(71 / 3)  // 23.0  强制类型转换只影响它所在位置之后的运算，所以这样是不行的
 
 # 内存
