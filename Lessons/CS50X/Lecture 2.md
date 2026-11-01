@@ -32,6 +32,15 @@ int score1，score2,score3；
 (score1+score2+score3)/(float)3
 ```
 注意：```
+```c++
 (float)(71 / 3)  // 23.0  强制类型转换只影响它所在位置之后的运算，所以这样是不行的
-
-# 内存
+```
+![[Pasted image 20261101222926.png]]
+# 数组 arrays
+一块连续排列的内存空间
+```c++
+int score[3];
+score[0]=72;
+score[1]=73;
+score[2]=33;
+```
