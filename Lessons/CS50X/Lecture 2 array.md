@@ -6,11 +6,11 @@ $debug50 ./buggy.c
 
 单步跳过
 
-# 流程
+# 编译流程
 1. preprocessing预处理
 2. compiling编译 c语言-> 汇编指令：cpu能理解的最低级别指令
 3. assembling 汇编  汇编代码->0和1
-4. linking 把你的代码和库里面的代码的0和1链接起来
+4. linking 链接  把你的代码和库里面的代码中的0和1链接起来
 ## 编译器
 source code->compiler（编译器）->machine code
 clang编译器
