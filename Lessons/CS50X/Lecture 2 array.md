@@ -6,6 +6,9 @@ $debug50 ./buggy.c
 
 单步跳过
 
+
+ **在不同操作系统和环境中，EOF的输入方式不同：Windows使用Ctrl+Z，Linux/Unix/Mac使用Ctrl+D。**
+
 # 编译流程
 1. preprocessing预处理
 2. compiling编译 c语言-> 汇编指令：cpu能理解的最低级别指令
