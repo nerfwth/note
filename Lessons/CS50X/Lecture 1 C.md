@@ -43,3 +43,7 @@ $rm hello
 
 中断程序
 ctrl-c
+# 代码评价标准
+## correctness
+## design
+## style
