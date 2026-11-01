@@ -5,3 +5,9 @@
 $debug50 ./buggy.c
 
 单步跳过
+
+# 编译器
+source code->compiler（编译器）->machine code
+clang编译器
+clang hello.c
+会产生./a.out
