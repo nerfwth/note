@@ -44,6 +44,7 @@ score[0]=72;
 score[1]=73;
 score[2]=33;
 ```
+C 语言中，数组作为函数参数传递时，会退化为指针。传递的不是整个数组，而是数组首元素的地址。
 ```c++
 float average(int length,int numbers[])
 {
@@ -52,5 +53,6 @@ float average(int length,int numbers[])
 	{
 		sum+=numbers[i];
 	}
+	return sum/(float)length;
 }
 ```
