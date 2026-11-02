@@ -25,6 +25,7 @@ $clang hello.c -lcs50  (链接cs50库)
 $clang -o hello hello.c -lcs50  //这里等于可以自定义程序名为hello
 # 运算
 只要在计算中用到哪怕一个浮点数，整个运算就会自动提升为浮点数运算。
+默认情况下，当你直接在代码里输入3.0这样的数字，会使用双精度浮点数进行存储
 example ：
 ```c++
 int score1，score2,score3；
